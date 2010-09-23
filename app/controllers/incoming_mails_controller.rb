@@ -16,7 +16,7 @@ class IncomingMailsController < ApplicationController
       signature = Digest::MD5.hexdigest(request.request_parameters.sort.map{|k,v| v}.join + SECRET)
       
       if provided != signature
-        render :text => "Message signature fail #{provided} != #{signature}", :status => 403
+        render :text => "Message signature fail #{provided} != #{signature}", :status => 403, :content_type => Mime::TEXT.to_s
         return false 
       end
     end
