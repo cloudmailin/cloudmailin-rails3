@@ -2,7 +2,7 @@ class IncomingMailsController < ApplicationController
   skip_before_filter :verify_authenticity_token
   before_filter :verify_signature
   
-  SECRET = 'f811674dbd7be5b5e77f'
+  SECRET = ENV['CLOUDMAILIN_SECRET'] || 'f811674dbd7be5b5e77f'
   
   def create
     message = Mail.new(params[:message])
