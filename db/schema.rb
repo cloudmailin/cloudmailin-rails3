@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(:version => 20101111192136) do
 
   create_table "movies", :force => true do |t|
     t.string   "title"
+    t.string   "description"
     t.string   "poster_file_name"
     t.string   "poster_content_type"
     t.integer  "poster_file_size"

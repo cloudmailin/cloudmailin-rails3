@@ -12,14 +12,17 @@ class MovieMailer < ActionMailer::Base
     # Create the movie itself
     Movie.create do |movie|
       movie.title = message.subject
+      movie.description = message.to_s
       
       # Create an AttachmentFile subclass of a tempfile with paperclip aware features and add it
-      poster_file = AttachmentFile.new('test.jpg')
-      poster_file.write attachment.decoded
-      poster_file.flush
-      poster_file.original_filename = attachment.filename
-      poster_file.content_type = attachment.mime_type
-      movie.poster = poster_file
+      if attachment
+        poster_file = AttachmentFile.new('test.jpg')
+        poster_file.write attachment.decoded
+        poster_file.flush
+        poster_file.original_filename = attachment.filename
+        poster_file.content_type = attachment.mime_type
+        movie.poster = poster_file
+      end
     end
   end
 end

@@ -2,6 +2,7 @@ class CreateMovies < ActiveRecord::Migration
   def self.up
     create_table :movies do |t|
       t.string    :title
+      t.string    :description
       
       t.string    :poster_file_name
       t.string    :poster_content_type
