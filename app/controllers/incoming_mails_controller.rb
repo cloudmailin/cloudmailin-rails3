@@ -6,6 +6,11 @@ class IncomingMailsController < ApplicationController
   
   def create
     message = Mail.new(params[:message])
+    
+    Rails.logger.info message.subject
+    Rails.logger.info params[:text]
+    Rails.logger.info params[:html]
+    
     render :text => message.subject
   end
   
