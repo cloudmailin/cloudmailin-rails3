@@ -1,6 +1,6 @@
 class IncomingMailsController < ApplicationController
   skip_before_filter :verify_authenticity_token
-  before_filter :verify_signature
+  # before_filter :verify_signature
   
   SECRET = ENV['CLOUDMAILIN_SECRET'] || 'a67b82d1d02974b87c3d'
   
